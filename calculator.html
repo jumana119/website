@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#211728" />
+    <link rel="icon" type="Mathwear/png" href="favicon.png" />
+    <meta
+      name="description"
+      content="حاسبة تكلفة أزياء تفاعلية لحساب الخامة والعمل والتصميم والسعر والربح المتوقع."
+    />
+    <title>الحاسبة | ميزان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..600,0..1,-50..200&family=Tajawal:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <script src="storage.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="calculator">
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="ميزان، أزياء بالأرقام"
+          ><span class="brand-mark">م</span
+          ><span class="brand-copy"
+            ><strong>مِيزان</strong><small>أزياء بالأرقام</small></span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="التنقل الرئيسي">
+          <a href="index.html" data-nav="home"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >home</span
+            ><span>الرئيسية</span></a
+          ><a href="products.html" data-nav="products"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >styler</span
+            ><span>المنتجات</span></a
+          ><a href="add-product.html" data-nav="add"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >add_box</span
+            ><span>أضف تصميماً</span></a
+          ><a href="calculator.html" data-nav="calculator"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >calculate</span
+            ><span>الحاسبة</span></a
+          ><a href="analytics.html" data-nav="analytics"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >monitoring</span
+            ><span>التحليلات</span></a
+          ><a href="report.html" data-nav="report"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >description</span
+            ><span>التقرير</span></a
+          >
+        </nav>
+        <a class="button button-gold nav-cta" href="report.html"
+          >عرض التقرير
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >arrow_outward</span
+          ></a
+        >
+      </div>
+    </header>
+    <main>
+      <section class="page-banner page-width reveal">
+        <div>
+          <p class="eyebrow">
+            <span class="eyebrow-line"></span> حاسبة التصميم
+          </p>
+          <h1>الأرقام التي<br /><em>تدعم القرار.</em></h1>
+          <p>غيّري القيم وشاهدي أثر كل عنصر على تكلفة القطعة وسعرها.</p>
+        </div>
+        <div class="banner-mark">
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >calculate</span
+          ><small>حساب مباشر</small>
+        </div>
+      </section>
+      <section class="section page-width calculator-layout">
+        <form class="calculator-form reveal" id="calculator-form">
+          <div class="form-section-heading">
+            <span class="form-step">١</span>
+            <div>
+              <h2>اختاري التصميم</h2>
+              <p>يمكنك البدء بأحد المنتجات أو إدخال أرقام جديدة.</p>
+            </div>
+          </div>
+          <label class="field"
+            ><span>التصميم</span
+            ><select id="calc-product-select" name="productId"></select
+          ></label>
+          <div class="form-grid form-grid-2">
+            <label class="field"
+              ><span>الخامة</span
+              ><input id="calc-fabric" name="fabric" type="text"
+            /></label>
+            <label class="field"
+              ><span>كمية القماش (متر)</span
+              ><input
+                id="calc-meters"
+                name="meters"
+                type="number"
+                min="0"
+                step="0.1"
+            /></label>
+            <label class="field"
+              ><span>سعر المتر (ر.س)</span
+              ><input
+                id="calc-fabric-price"
+                name="fabricPrice"
+                type="number"
+                min="0"
+                step="0.5"
+            /></label>
+            <label class="field"
+              ><span>الخياطة والتنفيذ (ر.س)</span
+              ><input
+                id="calc-labor"
+                name="labor"
+                type="number"
+                min="0"
+                step="1"
+            /></label>
+            <label class="field"
+              ><span>الإكسسوارات (ر.س)</span
+              ><input
+                id="calc-trims"
+                name="trims"
+                type="number"
+                min="0"
+                step="1"
+            /></label>
+            <label class="field"
+              ><span>التغليف (ر.س)</span
+              ><input
+                id="calc-packaging"
+                name="packaging"
+                type="number"
+                min="0"
+                step="1"
+            /></label>
+            <label class="field"
+              ><span>مصاريف أخرى للوحدة (ر.س)</span
+              ><input
+                id="calc-overhead"
+                name="overhead"
+                type="number"
+                min="0"
+                step="1"
+            /></label>
+            <label class="field"
+              ><span>تكلفة إعداد التصميم (ر.س)</span
+              ><input
+                id="calc-design-cost"
+                name="designCost"
+                type="number"
+                min="0"
+                step="1"
+            /></label>
+            <label class="field"
+              ><span>كمية الإنتاج</span
+              ><input
+                id="calc-quantity"
+                name="quantity"
+                type="number"
+                min="1"
+                step="1"
+            /></label>
+            <label class="field"
+              ><span>الكمية المتوقع بيعها</span
+              ><input
+                id="calc-sales"
+                name="sales"
+                type="number"
+                min="1"
+                step="1"
+            /></label>
+          </div>
+          <div class="range-field">
+            <label for="calc-margin"
+              ><span>هامش الربح المستهدف</span
+              ><strong><output id="margin-output">٤٠٪</output></strong></label
+            ><input
+              id="calc-margin"
+              name="margin"
+              type="range"
+              min="10"
+              max="75"
+              step="1"
+              value="40"
+            />
+          </div>
+          <button class="button button-dark button-wide" type="submit">
+            احسبي النتيجة
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >functions</span
+            >
+          </button>
+        </form>
+        <aside class="result-panel reveal" aria-live="polite">
+          <div class="result-panel-top">
+            <p class="eyebrow eyebrow-light">
+              <span class="eyebrow-line"></span> نتيجة الحساب
+            </p>
+            <span class="result-status"
+              ><span class="status-dot"></span> تقدير تعليمي</span
+            >
+          </div>
+          <div class="result-price">
+            <span>سعر البيع المقترح للقطعة</span
+            ><strong id="result-price">—</strong>
+          </div>
+          <div class="result-metrics">
+            <div>
+              <span>تكلفة الوحدة</span><strong id="result-unit-cost">—</strong>
+            </div>
+            <div>
+              <span>الربح المتوقع</span><strong id="result-profit">—</strong>
+            </div>
+            <div>
+              <span>هامش الربح الفعلي</span
+              ><strong id="result-margin">—</strong>
+            </div>
+            <div>
+              <span>نقطة التعادل</span><strong id="result-breakeven">—</strong>
+            </div>
+          </div>
+          <div class="result-equation">
+            <span>السعر المقترح</span><b>=</b><span>تكلفة الوحدة</span><b>÷</b
+            ><span>(١ − هامش الربح)</span>
+          </div>
+          <a class="result-report-link" href="report.html"
+            >انتقلي إلى التقرير النهائي
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >arrow_back</span
+            ></a
+          >
+        </aside>
+      </section>
+      <section class="page-width section formula-row reveal">
+        <div>
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >functions</span
+          >
+          <h2>المعادلات المستخدمة</h2>
+        </div>
+        <p><strong>تكلفة الخامة</strong> = كمية القماش × سعر المتر</p>
+        <p>
+          <strong>تكلفة الوحدة الكاملة</strong> = تكلفة التصنيع + (تكلفة التصميم
+          ÷ الكمية)
+        </p>
+        <p>
+          <strong>الربح المتوقع</strong> = (سعر البيع − تكلفة التصنيع) ×
+          المبيعات − تكلفة التصميم
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="page-width footer-main">
+        <a class="brand brand-footer" href="index.html"
+          ><span class="brand-mark">م</span
+          ><span class="brand-copy"
+            ><strong>مِيزان</strong><small>أزياء بالأرقام</small></span
+          ></a
+        >
+        <p>
+          مشروع جامعي يلتقي فيه التصميم بالحساب، لتصبح كل قطعة فكرةً قابلةً
+          للقياس.
+        </p>
+        <nav aria-label="روابط سفلية">
+          <a href="products.html">المنتجات</a
+          ><a href="add-product.html">أضف تصميماً</a
+          ><a href="calculator.html">الحاسبة</a
+          ><a href="analytics.html">التحليلات</a
+          ><a href="report.html">التقرير</a>
+        </nav>
+      </div>
+      <div class="page-width footer-bottom">
+        <span>© <span data-year></span> مِيزان</span
+        ><span>الأرقام التعليمية قابلة للتعديل.</span>
+      </div>
+    </footer>
+  </body>
+</html>

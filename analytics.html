@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#211728" />
+    <link rel="icon" type="Mathwear/png" href="favicon.png" />
+    <meta
+      name="description"
+      content="تحليلات مرئية تقارن تكلفة المنتجات وأسعار البيع والأرباح المتوقعة."
+    />
+    <title>التحليلات | ميزان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..600,0..1,-50..200&family=Tajawal:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <script src="storage.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="analytics">
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="ميزان، أزياء بالأرقام"
+          ><span class="brand-mark">م</span
+          ><span class="brand-copy"
+            ><strong>مِيزان</strong><small>أزياء بالأرقام</small></span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="التنقل الرئيسي">
+          <a href="index.html" data-nav="home"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >home</span
+            ><span>الرئيسية</span></a
+          ><a href="products.html" data-nav="products"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >styler</span
+            ><span>المنتجات</span></a
+          ><a href="add-product.html" data-nav="add"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >add_box</span
+            ><span>أضف تصميماً</span></a
+          ><a href="calculator.html" data-nav="calculator"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >calculate</span
+            ><span>الحاسبة</span></a
+          ><a href="analytics.html" data-nav="analytics"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >monitoring</span
+            ><span>التحليلات</span></a
+          ><a href="report.html" data-nav="report"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >description</span
+            ><span>التقرير</span></a
+          >
+        </nav>
+        <a class="button button-gold nav-cta" href="calculator.html"
+          >عدّلي الأرقام
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >arrow_outward</span
+          ></a
+        >
+      </div>
+    </header>
+    <main>
+      <section class="page-banner page-width reveal">
+        <div>
+          <p class="eyebrow">
+            <span class="eyebrow-line"></span> قراءة البيانات
+          </p>
+          <h1>شاهدي الأرقام<br /><em>من زاوية أخرى.</em></h1>
+          <p>مقارنة بسيطة بين تكلفة الوحدة وسعرها والربح المحتمل.</p>
+        </div>
+        <div class="banner-mark">
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >monitoring</span
+          ><small>بيانات مرئية</small>
+        </div>
+      </section>
+      <section class="section page-width analytics-section">
+        <div class="analytics-summary" id="analytics-summary"></div>
+        <div class="analytics-controls reveal" aria-label="مرشحات التحليلات">
+          <label class="field">
+            <span>فئة القطعة</span>
+            <select id="analytics-type-filter">
+              <option value="all">جميع الفئات</option>
+              <option value="فستان">فساتين</option>
+              <option value="جاكيت">جاكيتات</option>
+              <option value="تيشيرت">تيشيرتات</option>
+              <option value="custom">تصاميمي المضافة</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>ترتيب المنتجات</span>
+            <select id="analytics-sort">
+              <option value="profit">الأعلى ربحاً</option>
+              <option value="price">سعر البيع</option>
+              <option value="cost">تكلفة الوحدة</option>
+              <option value="name">الاسم</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>مكونات تكلفة التصميم</span>
+            <select id="analytics-mix-product"></select>
+          </label>
+          <p id="analytics-filter-count" role="status" aria-live="polite"></p>
+        </div>
+        <div class="chart-grid">
+          <article class="chart-card chart-card-wide reveal">
+            <div class="chart-heading">
+              <div>
+                <p class="eyebrow">مقارنة الأسعار</p>
+                <h2>التكلفة مقابل سعر البيع</h2>
+              </div>
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >bar_chart</span
+              >
+            </div>
+            <div class="chart-wrap">
+              <canvas
+                id="chart-price-cost"
+                role="img"
+                aria-label="رسم بياني يقارن تكلفة الوحدة بسعر البيع المقترح"
+              ></canvas>
+            </div>
+            <div class="chart-legend">
+              <span><i class="legend-cost"></i> تكلفة الوحدة</span
+              ><span><i class="legend-price"></i> سعر البيع المقترح</span>
+            </div>
+          </article>
+          <article class="chart-card reveal">
+            <div class="chart-heading">
+              <div>
+                <p class="eyebrow">توزيع التكلفة</p>
+                <h2>من أين تأتي التكلفة؟</h2>
+              </div>
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >donut_small</span
+              >
+            </div>
+            <div class="chart-wrap chart-wrap-donut">
+              <canvas
+                id="chart-cost-mix"
+                role="img"
+                aria-label="رسم دائري يوضح مكونات تكلفة المنتج"
+              ></canvas>
+            </div>
+            <div
+              class="chart-legend chart-legend-wrap"
+              id="cost-mix-legend"
+            ></div>
+          </article>
+          <article class="chart-card chart-card-wide reveal">
+            <div class="chart-heading">
+              <div>
+                <p class="eyebrow">مقارنة الأرباح</p>
+                <h2>الربح المتوقع من كل تصميم</h2>
+              </div>
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >trending_up</span
+              >
+            </div>
+            <div class="chart-wrap">
+              <canvas
+                id="chart-profit"
+                role="img"
+                aria-label="رسم بياني يقارن الأرباح المتوقعة للمنتجات"
+              ></canvas>
+            </div>
+            <p class="chart-note">
+              يُقدّر الربح على أساس الكمية المتوقع بيعها بعد خصم تكلفة التصميم.
+            </p>
+          </article>
+        </div>
+        <section
+          class="analytics-table-card reveal"
+          aria-labelledby="analytics-table-title"
+        >
+          <div class="chart-heading">
+            <div>
+              <p class="eyebrow">تفصيل حسب التصميم</p>
+              <h2 id="analytics-table-title">مقارنة الأرقام</h2>
+            </div>
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >table_chart</span
+            >
+          </div>
+          <div class="table-scroll">
+            <table class="report-table analytics-table">
+              <thead>
+                <tr>
+                  <th>التصميم</th>
+                  <th>الفئة والخامة</th>
+                  <th>تكلفة الوحدة</th>
+                  <th>سعر البيع</th>
+                  <th>الربح المتوقع</th>
+                  <th>نقطة التعادل</th>
+                </tr>
+              </thead>
+              <tbody id="analytics-table-body"></tbody>
+            </table>
+          </div>
+          <p class="analytics-empty" id="analytics-empty" hidden>
+            لا توجد تصميمات تطابق المرشح الحالي.
+          </p>
+        </section>
+        <div class="analysis-footnote">
+          <span class="material-symbols-outlined" aria-hidden="true">info</span>
+          <p>
+            تعتمد الرسوم على المنتجات المحفوظة في هذا المتصفح والأرقام
+            الافتراضية القابلة للتعديل.
+          </p>
+          <a href="calculator.html"
+            >عدّلي الحسابات
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >arrow_back</span
+            ></a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="page-width footer-main">
+        <a class="brand brand-footer" href="index.html"
+          ><span class="brand-mark">م</span
+          ><span class="brand-copy"
+            ><strong>مِيزان</strong><small>أزياء بالأرقام</small></span
+          ></a
+        >
+        <p>
+          مشروع جامعي يلتقي فيه التصميم بالحساب، لتصبح كل قطعة فكرةً قابلةً
+          للقياس.
+        </p>
+        <nav aria-label="روابط سفلية">
+          <a href="products.html">المنتجات</a
+          ><a href="add-product.html">أضف تصميماً</a
+          ><a href="calculator.html">الحاسبة</a
+          ><a href="analytics.html">التحليلات</a
+          ><a href="report.html">التقرير</a>
+        </nav>
+      </div>
+      <div class="page-width footer-bottom">
+        <span>© <span data-year></span> مِيزان</span
+        ><span>الأرقام التعليمية قابلة للتعديل.</span>
+      </div>
+    </footer>
+  </body>
+</html>
