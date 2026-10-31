@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#211728" />
+    <link rel="icon" type="Mathwear/png" href="favicon.png" />
+    <meta
+      name="description"
+      content="تقرير نهائي يوضح تكلفة التصميم وسعر البيع والربح المتوقع للقطعة."
+    />
+    <title>التقرير النهائي | ميزان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..600,0..1,-50..200&family=Tajawal:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <script src="storage.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="report">
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="ميزان، أزياء بالأرقام"
+          ><span class="brand-mark">م</span
+          ><span class="brand-copy"
+            ><strong>مِيزان</strong><small>أزياء بالأرقام</small></span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="التنقل الرئيسي">
+          <a href="index.html" data-nav="home"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >home</span
+            ><span>الرئيسية</span></a
+          ><a href="products.html" data-nav="products"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >styler</span
+            ><span>المنتجات</span></a
+          ><a href="add-product.html" data-nav="add"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >add_box</span
+            ><span>أضف تصميماً</span></a
+          ><a href="calculator.html" data-nav="calculator"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >calculate</span
+            ><span>الحاسبة</span></a
+          ><a href="analytics.html" data-nav="analytics"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >monitoring</span
+            ><span>التحليلات</span></a
+          ><a href="report.html" data-nav="report"
+            ><span class="material-symbols-outlined" aria-hidden="true"
+              >description</span
+            ><span>التقرير</span></a
+          >
+        </nav>
+        <button
+          class="button button-gold nav-cta no-print"
+          type="button"
+          data-print-report
+        >
+          اطبعي التقرير
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >print</span
+          >
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="page-banner page-width reveal no-print">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-line"></span> خلاصة الحساب</p>
+          <h1>قراركِ<br /><em>في صفحة واحدة.</em></h1>
+          <p>تقرير يختصر تكلفة التصميم والسعر والربح المتوقع.</p>
+        </div>
+        <div class="banner-mark">
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >description</span
+          ><small>النتيجة النهائية</small>
+        </div>
+      </section>
+      <section class="section page-width report-section">
+        <div class="report-controls no-print">
+          <label class="field">
+            <span>نطاق التقرير</span>
+            <select id="report-scope">
+              <option value="single">تقرير تصميم محدد</option>
+              <option value="all">تقرير شامل للتصاميم</option>
+            </select>
+          </label>
+          <label class="field" id="report-product-field">
+            <span>التصميم</span>
+            <select id="report-product-select"></select>
+          </label>
+          <p id="report-selection-note" role="status" aria-live="polite"></p>
+        </div>
+        <article
+          class="report-sheet reveal"
+          id="report-content"
+          aria-live="polite"
+        ></article>
+        <div class="report-actions no-print">
+          <a class="button button-dark" href="calculator.html"
+            >عدّلي الحساب
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >calculate</span
+            ></a
+          ><button
+            class="button button-outline"
+            type="button"
+            data-print-report
+          >
+            اطبعي أو احفظي بصيغة PDF
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >print</span
+            >
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer no-print">
+      <div class="page-width footer-main">
+        <a class="brand brand-footer" href="index.html"
+          ><span class="brand-mark">م</span
+          ><span class="brand-copy"
+            ><strong>مِيزان</strong><small>أزياء بالأرقام</small></span
+          ></a
+        >
+        <p>
+          مشروع جامعي يلتقي فيه التصميم بالحساب، لتصبح كل قطعة فكرةً قابلةً
+          للقياس.
+        </p>
+        <nav aria-label="روابط سفلية">
+          <a href="products.html">المنتجات</a
+          ><a href="add-product.html">أضف تصميماً</a
+          ><a href="calculator.html">الحاسبة</a
+          ><a href="analytics.html">التحليلات</a
+          ><a href="report.html">التقرير</a>
+        </nav>
+      </div>
+      <div class="page-width footer-bottom">
+        <span>© <span data-year></span> مِيزان</span
+        ><span>الأرقام التعليمية قابلة للتعديل.</span>
+      </div>
+    </footer>
+  </body>
+</html>
